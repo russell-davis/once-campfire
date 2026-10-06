@@ -1,0 +1,219 @@
+:root {
+  --slack-topbar-height: 44px;
+  --slack-rail-width: 70px;
+  --slack-sidebar-width: 260px;
+  --slack-header-height: 49px;
+  --slack-gutter: 20px;
+}
+
+#slack-topbar,
+#slack-rail {
+  display: none;
+}
+
+@media (min-width: 100ch) {
+  body.sidebar {
+    --sidebar-width: var(--slack-sidebar-width);
+
+    background-color: var(--slack-chrome);
+    block-size: 100dvh;
+    grid-template-areas:
+      "top top top"
+      "rail sidebar nav"
+      "rail sidebar main";
+    grid-template-columns: var(--slack-rail-width) var(--slack-sidebar-width) minmax(0, 1fr);
+    grid-template-rows: var(--slack-topbar-height) min-content minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  body.sidebar #app-logo {
+    display: none;
+  }
+
+  #slack-topbar {
+    align-items: center;
+    background-color: var(--slack-chrome);
+    display: flex;
+    grid-area: top;
+    justify-content: center;
+    padding-inline: var(--slack-rail-width);
+  }
+
+  .slack-topbar__search {
+    align-items: center;
+    background-color: var(--slack-search-bg);
+    border-radius: 6px;
+    color: var(--slack-chrome-text);
+    display: flex;
+    font-size: 13px;
+    gap: 8px;
+    block-size: 28px;
+    inline-size: min(100%, 720px);
+    padding-inline: 10px;
+    text-decoration: none;
+
+    img {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      filter: brightness(1.15);
+    }
+  }
+
+  #slack-rail {
+    align-items: center;
+    background-color: var(--slack-chrome);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    grid-area: rail;
+    padding-block: 8px 16px;
+  }
+
+  .slack-rail__logo {
+    border-radius: 8px;
+    display: block;
+    margin-block-end: 6px;
+    overflow: hidden;
+
+    img {
+      block-size: 36px;
+      display: block;
+      inline-size: 36px;
+      object-fit: cover;
+    }
+  }
+
+  .slack-rail__item {
+    align-items: center;
+    color: var(--slack-chrome-text);
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    font-weight: 700;
+    gap: 3px;
+    text-decoration: none;
+  }
+
+  .slack-rail__icon {
+    border-radius: 8px;
+    display: grid;
+    block-size: 36px;
+    inline-size: 36px;
+    place-items: center;
+    transition: background-color 150ms ease;
+
+    .slack-rail__item:hover & {
+      background-color: var(--slack-rail-hover);
+    }
+  }
+
+  .slack-rail__bottom {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-block-start: auto;
+  }
+
+  .slack-rail__avatar img {
+    block-size: 36px;
+    border-radius: 8px;
+    display: block;
+    inline-size: 36px;
+    object-fit: cover;
+  }
+
+  body.sidebar #sidebar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: var(--slack-sidebar);
+    block-size: auto;
+    border-start-start-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    grid-area: sidebar;
+    max-block-size: none;
+    min-block-size: 0;
+    overflow: hidden;
+    transform: none;
+  }
+
+  body.sidebar #nav {
+    align-items: center;
+    background-color: var(--slack-bg);
+    border-block-end: 1px solid var(--slack-border);
+    border-start-end-radius: 8px;
+    column-gap: 4px;
+    grid-area: nav;
+    inset: auto;
+    margin: 0;
+    min-block-size: var(--slack-header-height);
+    padding: 0 12px 0 var(--slack-gutter);
+    pointer-events: auto;
+    position: relative;
+
+    &::before {
+      display: none;
+    }
+
+    .account-logo {
+      display: none;
+    }
+
+    .room--current {
+      margin-inline-start: -8px;
+    }
+
+    > .room--current + * {
+      margin-inline-start: auto;
+    }
+
+    .btn:not(.room--current) {
+      --btn-background: transparent;
+      --btn-border-color: transparent;
+      --btn-size: 32px;
+      --btn-border-radius: 6px;
+    }
+
+    .btn:not(.room--current):hover {
+      --btn-background: var(--slack-hover);
+      --hover-size: 0;
+    }
+  }
+
+  body.sidebar #main-content {
+    background-color: var(--slack-bg);
+    border: 0;
+    margin: 0;
+    min-block-size: 0;
+  }
+
+  body.sidebar .composer__context-btn {
+    display: none;
+  }
+}
+
+body.sidebar #nav .room--current {
+  --btn-background: transparent;
+  --btn-border-color: transparent;
+  --btn-color: var(--slack-text-strong);
+  --btn-border-radius: 6px;
+  --btn-padding: 2px 8px;
+
+  min-block-size: 0;
+
+  .room__contents {
+    font-size: 18px;
+    font-weight: 900;
+    max-inline-size: 60ch;
+  }
+
+  &:not(:has(.for-screen-reader)) .room__contents::before {
+    color: var(--slack-muted);
+    content: "# ";
+    font-weight: 400;
+  }
+}

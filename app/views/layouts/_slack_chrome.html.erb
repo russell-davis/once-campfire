@@ -1,0 +1,35 @@
+<header id="slack-topbar">
+  <%= link_to searches_path, class: "slack-topbar__search" do %>
+    <%= image_tag "search.svg", size: 14, aria: { hidden: "true" }, class: "colorize--black" %>
+    <span class="overflow-ellipsis">Search <%= Current.account.name %></span>
+  <% end %>
+</header>
+
+<nav id="slack-rail" aria-label="Workspace">
+  <%= link_to root_path, class: "slack-rail__logo", title: Current.account.name do %>
+    <%= image_tag fresh_account_logo_path, size: 36, aria: { hidden: "true" } %>
+    <span class="for-screen-reader"><%= Current.account.name %></span>
+  <% end %>
+
+  <%= link_to root_path, class: "slack-rail__item" do %>
+    <span class="slack-rail__icon"><%= image_tag "messages.svg", size: 20, aria: { hidden: "true" }, class: "colorize--black" %></span>
+    <span class="slack-rail__label">Home</span>
+  <% end %>
+
+  <%= link_to searches_path, class: "slack-rail__item" do %>
+    <span class="slack-rail__icon"><%= image_tag "search.svg", size: 20, aria: { hidden: "true" }, class: "colorize--black" %></span>
+    <span class="slack-rail__label">Search</span>
+  <% end %>
+
+  <div class="slack-rail__bottom">
+    <%= link_to edit_account_path, class: "slack-rail__item" do %>
+      <span class="slack-rail__icon"><%= image_tag "settings.svg", size: 20, aria: { hidden: "true" }, class: "colorize--black" %></span>
+      <span class="for-screen-reader">Account Settings</span>
+    <% end %>
+
+    <%= link_to user_profile_path, class: "slack-rail__avatar" do %>
+      <%= image_tag fresh_user_avatar_path(Current.user), size: 36, aria: { hidden: "true" } %>
+      <span class="for-screen-reader">My Settings</span>
+    <% end %>
+  </div>
+</nav>

@@ -6,6 +6,12 @@
       data-controller="badge-dot"
       data-badge-dot-unread-class="unread"
       data-action="rooms-list:unread@window->badge-dot#update rooms-list:read@window->badge-dot#update turbo:submit-start->turbo-frame#unpermanize">
+    <header class="slack-sidebar__header">
+      <span class="overflow-ellipsis"><%= Current.account.name %></span>
+    </header>
+
+    <h2 class="slack-sidebar__section slack-sidebar__section--directs">Direct messages</h2>
+
     <turbo-frame id="direct_rooms_control" target="_top">
       <div class="directs gap overflow-x overflow-hide-scrollbar">
         <%= link_to new_rooms_direct_path, class: "direct direct__new", data: { turbo_frame: "_self" } do %>
@@ -30,6 +36,8 @@
     </turbo-frame>
 
     <div class="rooms position-relative flex flex-column gap">
+      <h2 class="slack-sidebar__section">Channels</h2>
+
       <div id="shared_rooms" contents data-controller="sorted-list">
         <% @other_memberships.each do |membership| %>
           <%= render "users/sidebars/rooms/shared", room: membership.room, unread: membership.unread? %>

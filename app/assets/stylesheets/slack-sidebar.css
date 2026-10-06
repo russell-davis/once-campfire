@@ -1,0 +1,213 @@
+#sidebar {
+  color: var(--slack-sidebar-text);
+  font-size: 15px;
+
+  .sidebar__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-block-size: 0;
+    overflow-y: auto;
+    padding-block-end: 16px;
+  }
+
+  .sidebar__tools {
+    @media (min-width: 100ch) {
+      display: none;
+    }
+  }
+}
+
+.slack-sidebar__header {
+  align-items: center;
+  color: var(--slack-text-strong);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 900;
+  min-block-size: var(--slack-header-height, 49px);
+  order: 0;
+  padding-inline: 16px;
+
+  @media (max-width: 100ch) {
+    padding-inline-start: calc(var(--btn-size) + 24px);
+  }
+}
+
+.slack-sidebar__section {
+  color: var(--slack-sidebar-text);
+  font-size: 15px;
+  font-weight: 400;
+  margin: 12px 0 2px;
+  padding-inline: 10px;
+}
+
+.slack-sidebar__section--directs {
+  order: 2;
+  padding-inline: 18px;
+}
+
+#sidebar .rooms {
+  --row-gap: 0;
+
+  gap: 0;
+  order: 1;
+  padding-inline: 8px;
+}
+
+#sidebar .room,
+#sidebar .direct {
+  --btn-background: transparent;
+  --btn-border-color: transparent;
+  --btn-border-radius: 6px;
+  --btn-color: var(--slack-sidebar-text);
+  --btn-padding: 0 10px;
+  --hover-size: 0;
+
+  align-items: center;
+  block-size: 28px;
+  border-radius: 6px;
+  box-shadow: none;
+  color: var(--slack-sidebar-text);
+  display: flex;
+  font-weight: 400;
+  gap: 8px;
+  inline-size: 100%;
+  justify-content: start;
+  margin: 0;
+  max-inline-size: 100%;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--slack-sidebar-hover);
+  }
+
+  &.unread {
+    --btn-color: var(--slack-text-strong);
+
+    box-shadow: none;
+    color: var(--slack-text-strong);
+    font-weight: 700;
+  }
+
+  &.slack-current {
+    --btn-background: var(--slack-selected);
+    --btn-color: var(--slack-text-strong);
+
+    background-color: var(--slack-selected);
+    color: var(--slack-text-strong);
+  }
+}
+
+#shared_rooms .room::before {
+  content: "#";
+  display: inline-block;
+  font-size: 16px;
+  inline-size: 16px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+#sidebar .rooms__new-btn {
+  inset: auto;
+  position: static;
+
+  img {
+    inline-size: 16px;
+  }
+
+  &::after {
+    content: "Add channel";
+  }
+}
+
+#sidebar .directs:not(.directs--new) {
+  -webkit-backdrop-filter: none;
+  -webkit-mask-image: none;
+  backdrop-filter: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  mask-image: none;
+  order: 3;
+  overflow: visible;
+  padding: 0 8px;
+  position: static;
+
+  > [contents] {
+    display: contents;
+  }
+}
+
+#sidebar .directs--new {
+  order: 3;
+  padding: 4px 8px;
+  position: static;
+}
+
+#sidebar .direct {
+  padding: 0 10px;
+
+  .avatar,
+  .avatar__group {
+    --avatar-border-radius: 4px;
+    --avatar-size: 20px;
+
+    block-size: 20px;
+    flex-shrink: 0;
+    inline-size: 20px;
+    margin: 0;
+
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  .avatar__group {
+    --avatar-size: 9px;
+
+    gap: 1px;
+
+    > .avatar {
+      --avatar-size: 9px;
+
+      block-size: 9px;
+      inline-size: 9px;
+      margin: 0;
+    }
+  }
+
+  .avatar--icon {
+    background: none;
+    border: 0;
+
+    img {
+      inline-size: 16px;
+      margin: 0;
+    }
+  }
+
+  &:hover .avatar:not(.avatar--icon) {
+    filter: none;
+  }
+}
+
+#sidebar .direct__author {
+  background: none;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+
+  .txt-small {
+    font-size: inherit;
+  }
+
+  .unread &::after {
+    display: none;
+  }
+}
+
+#sidebar .direct__new {
+  margin: 0;
+}
