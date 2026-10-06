@@ -253,7 +253,7 @@ body.sidebar #nav .room--current {
     padding: 0;
     place-items: center;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
 
     &:hover {
       background-color: var(--slack-hover);
