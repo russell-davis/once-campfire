@@ -1,10 +1,8 @@
 <% @page_title = @user.name %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back %>
-  </div>
+<%= slack_page title: "Profile", back: slack_page_referrer_path %>
 
+<% content_for :nav do %>
   <div class="flex-item-justify-end">
     <%= form_with url: session_path, method: :delete, data: { controller: "sessions" } do %>
       <%= hidden_field_tag :push_subscription_endpoint, nil, data: { sessions_target: "pushSubscriptionEndpoint" } %>

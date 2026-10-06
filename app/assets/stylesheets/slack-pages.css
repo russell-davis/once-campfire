@@ -1,0 +1,60 @@
+body.slack-page {
+  #main-content {
+    align-content: start;
+    justify-content: start;
+    overflow: auto;
+    padding: 24px var(--slack-gutter);
+  }
+
+  #nav .slack-page__title {
+    color: var(--slack-text-strong);
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0 auto 0 0;
+    min-inline-size: 0;
+  }
+
+  #nav .slack-page__close {
+    margin-inline-start: 4px;
+    order: 99;
+  }
+
+  .panel {
+    --panel-padding: 26px;
+
+    background-color: var(--slack-bg);
+    border: 1px solid var(--slack-border);
+    border-radius: 8px;
+    box-shadow: none;
+    color: var(--slack-text);
+    flex-shrink: 0;
+    inline-size: min(560px, 100%);
+    margin: 0 auto 16px;
+    max-inline-size: 100%;
+    padding: var(--panel-padding);
+  }
+
+  .panel--wide {
+    inline-size: min(720px, 100%);
+  }
+
+  #footer {
+    color: var(--slack-muted);
+  }
+
+  .input {
+    background-color: var(--slack-input-bg);
+    border-color: var(--slack-input-border);
+    color: var(--slack-text);
+  }
+}
+
+@media (max-width: 99.99ch) {
+  body.slack-page #nav {
+    padding-inline-end: 12px;
+  }
+
+  body.slack-page #main-content {
+    padding-inline: 12px;
+  }
+}

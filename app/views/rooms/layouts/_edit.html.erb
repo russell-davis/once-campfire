@@ -1,10 +1,6 @@
 <% @page_title = "Edit settings for #{room.name}" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to_last_room_visited %>
-  </div>
-<% end %>
+<%= slack_page title: "Channel settings" %>
 
 <section class="panel txt-align-center" style="view-transition-name: edit-room-<%= room.id %>">
   <%= yield %>

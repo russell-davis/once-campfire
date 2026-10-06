@@ -1,10 +1,6 @@
 <% @page_title = "New chat room" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to_last_room_visited %>
-  </div>
-<% end %>
+<%= slack_page title: "Create a channel" %>
 
 <section class="panel txt-align-center" style="view-transition-name: <%= local_assigns[:view_transition_name] || "new-room" %>">
   <%= yield %>

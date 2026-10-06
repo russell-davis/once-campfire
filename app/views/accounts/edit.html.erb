@@ -1,10 +1,8 @@
 <% @page_title = "Account settings" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to_last_room_visited %>
-  </div>
+<%= slack_page title: "Workspace settings" %>
 
+<% content_for :nav do %>
   <% if Current.user.administrator? %>
     <div class="flex align-center gap flex-item-justify-end">
       <%= link_to account_bots_path, class: "btn", style: "view-transition-name: chat-bots" do %>

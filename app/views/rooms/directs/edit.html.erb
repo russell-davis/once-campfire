@@ -1,10 +1,6 @@
 <% @page_title = "Edit settings for #{room_display_name(@room)}" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to_last_room_visited %>
-  </div>
-<% end %>
+<%= slack_page title: "Ping settings" %>
 
 <div class="panel txt-align-center">
   <section class="directs--edit margin-block-end">

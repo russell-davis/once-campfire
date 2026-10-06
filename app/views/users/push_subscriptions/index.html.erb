@@ -1,10 +1,6 @@
 <% @page_title = "Push notification subscriptions" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to_last_room_visited %>
-  </div>
-<% end %>
+<%= slack_page title: "Push notifications" %>
 
 <section class="panel panel--wide flex flex-column gap">
   <h1 class="txt-align-center txt-large margin-none">Push Notification Subscriptions</h1>

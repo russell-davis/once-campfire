@@ -1,10 +1,6 @@
 <% @page_title = "Chat bots" %>
 
-<% content_for :nav do %>
-  <div class="flex-item-justify-start">
-    <%= link_back_to edit_account_path %>
-  </div>
-<% end %>
+<%= slack_page title: "Chat bots", back: edit_account_path %>
 
 <section class="panel panel--wide txt-align-center flex flex-column position-relative" style="view-transition-name: chat-bots">
   <div class="flex align-center gap">
