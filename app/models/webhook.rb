@@ -41,9 +41,17 @@ class Webhook < ApplicationRecord
     def payload(message)
       {
         user:    { id: message.creator.id, name: message.creator.name },
-        room:    { id: message.room.id, name: message.room.name, path: room_bot_messages_path(message) },
+        room:    room_payload(message),
         message: { id: message.id, body: { html: message.body.body, plain: without_recipient_mentions(message.plain_text_body) }, path: message_path(message) }
       }.to_json
+    end
+
+    def room_payload(message)
+      room = message.room
+
+      { id: room.id, name: room.name, direct: room.direct?, path: room_bot_messages_path(message) }.tap do |payload|
+        payload[:members] = room.users.map(&:name) if room.direct?
+      end
     end
 
     def message_path(message)

@@ -9,11 +9,22 @@ class WebhookTest < ActiveSupport::TestCase
     WebMock.stub_request(:post, webhooks(:bender).url).
       with(body: hash_including(
         user: { id: message.creator.id, name: message.creator.name },
-        room: { id: message.room.id, name: message.room.name, path: bot_messages_path },
+        room: { id: message.room.id, name: message.room.name, direct: false, path: bot_messages_path },
         message: { id: message.id, body: { html: "First post!", plain: "First post!" }, path: message_path },
       ))
 
     response = webhooks(:bender).deliver(messages(:first))
+    assert_equal 200, response.code.to_i
+  end
+
+  test "payload for a direct room lists its members" do
+    room = rooms(:bender_and_kevin)
+    message = room.messages.create!(body: "Hi Bender", creator: users(:kevin))
+
+    WebMock.stub_request(:post, webhooks(:bender).url).
+      with(body: hash_including(room: hash_including(id: room.id, name: nil, direct: true, members: room.users.map(&:name))))
+
+    response = webhooks(:bender).deliver(message)
     assert_equal 200, response.code.to_i
   end
 
