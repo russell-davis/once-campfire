@@ -252,6 +252,75 @@
   }
 }
 
+.messages .message__toolbar {
+  display: none;
+}
+
+@media (min-width: 100ch) and (hover: hover) and (pointer: fine) {
+  .messages .message .message__meta .message__actions {
+    align-items: center;
+    background-color: var(--slack-bg);
+    border: 1px solid var(--slack-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.18);
+    flex-wrap: nowrap;
+    gap: 2px;
+    opacity: 0;
+    padding: 2px;
+    pointer-events: none;
+    transition: opacity 100ms ease-in-out;
+  }
+
+  .messages .message:hover .message__actions,
+  .messages .message:focus-within .message__actions,
+  .messages .message:has(details[open]) .message__actions {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .messages .message__toolbar {
+    align-items: center;
+    display: flex;
+    gap: 2px;
+
+    form {
+      display: flex;
+      margin: 0;
+    }
+  }
+
+  .messages .message__actions .message__action-btn {
+    --btn-background: transparent;
+    --btn-border-color: transparent;
+    --btn-border-radius: 4px;
+    --btn-size: 32px;
+
+    flex: 0 0 auto;
+
+    &:where(:not(:active):hover) {
+      --btn-background: var(--slack-hover);
+    }
+  }
+
+  .messages .message__actions .message__options-btn {
+    --btn-background: transparent;
+    --btn-border-color: transparent;
+    --btn-border-radius: 4px;
+
+    opacity: 1;
+    transition: none;
+  }
+
+  .messages .message__toolbar .message__edit-btn {
+    display: none;
+
+    .admin &,
+    .message--me & {
+      display: inline-flex;
+    }
+  }
+}
+
 #footer .composer {
   padding: 0 var(--slack-gutter, 20px) 20px;
 }
