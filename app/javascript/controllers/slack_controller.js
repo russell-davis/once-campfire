@@ -24,7 +24,7 @@ export default class extends Controller {
     const key = event.key.toLowerCase()
     const mod = event.ctrlKey || event.metaKey
 
-    if (mod && !event.altKey && !event.shiftKey && (key === "k" || key === "t")) {
+    if (mod && !event.altKey && !event.shiftKey && (key === "k" || key === "t") && this.hasDialogTarget) {
       event.preventDefault()
       event.stopPropagation()
       this.toggleSwitcher()
@@ -50,13 +50,19 @@ export default class extends Controller {
 
     return [ ...channels.map(link => [ link, false ]), ...directs.map(link => [ link, true ]) ]
       .map(([ link, direct ]) => ({
-        name: link.textContent.replace(/\s+/g, " ").trim(),
+        name: this.visibleText(link),
         href: link.href,
         roomId: link.dataset.roomId,
         direct,
         unread: link.classList.contains("unread")
       }))
       .filter(room => room.name)
+  }
+
+  visibleText(element) {
+    const clone = element.cloneNode(true)
+    clone.querySelectorAll(".for-screen-reader").forEach(node => node.remove())
+    return clone.textContent.replace(/\s+/g, " ").trim()
   }
 
   visitAdjacentRoom(step, unreadOnly) {
