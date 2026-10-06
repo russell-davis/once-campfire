@@ -1,7 +1,9 @@
 <header id="slack-topbar">
-  <%= link_to searches_path, class: "slack-topbar__search" do %>
+  <%= form_with url: searches_path, class: "slack-topbar__search", role: "search",
+        data: { controller: "slack-search", action: "keydown.esc->slack-search#blur" } do |form| %>
     <%= image_tag "search.svg", size: 14, aria: { hidden: "true" }, class: "colorize--black" %>
-    <span class="overflow-ellipsis">Search <%= Current.account.name %></span>
+    <%= form.search_field :q, value: params[:q].presence, placeholder: "Search #{Current.account.name}", autocomplete: "off",
+          required: true, aria: { label: "Search" }, data: { slack_search_target: "input" } %>
   <% end %>
 </header>
 

@@ -1,0 +1,126 @@
+.slack-topbar__search input {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  flex: 1;
+  font: inherit;
+  min-inline-size: 0;
+  outline: 0;
+
+  &::placeholder {
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.slack-topbar__search:focus-within {
+  outline: 2px solid var(--color-link, #1d9bd1);
+}
+
+.slack-search-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  inline-size: 100%;
+  padding-block: 8px;
+}
+
+.slack-search-header__row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  min-inline-size: 0;
+}
+
+.slack-search-header__back {
+  align-items: center;
+  border-radius: 6px;
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 6px;
+
+  &:hover {
+    background-color: var(--slack-hover, oklch(50% 0 0 / 0.12));
+  }
+}
+
+.slack-search-header__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.slack-search-header__count {
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.slack-search-header__form {
+  align-items: center;
+  border: 1px solid var(--slack-border, oklch(50% 0 0 / 0.3));
+  border-radius: 6px;
+  display: none;
+  gap: 8px;
+  padding-inline: 10px;
+
+  input {
+    background: transparent;
+    block-size: 32px;
+    border: 0;
+    color: inherit;
+    flex: 1;
+    font: inherit;
+    min-inline-size: 0;
+    outline: 0;
+  }
+
+  @media (max-width: 99.99ch) {
+    display: flex;
+  }
+}
+
+.slack-search-header__recents {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  form {
+    display: contents;
+  }
+}
+
+.slack-search-header__label {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.slack-search-chip {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--slack-border, oklch(50% 0 0 / 0.3));
+  border-radius: 999px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.8rem;
+  gap: 4px;
+  max-inline-size: 20ch;
+  padding: 2px 10px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--slack-hover, oklch(50% 0 0 / 0.12));
+  }
+}
+
+.slack-search-header__hint {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.7;
+}
