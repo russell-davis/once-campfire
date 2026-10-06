@@ -33,3 +33,11 @@
     <% end %>
   </div>
 </nav>
+
+<div id="slack-menu" data-controller="slack-menu" data-action="turbo:before-visit@document->slack-menu#close click@window->slack-menu#navigated">
+  <button type="button" class="slack-menu__btn" data-slack-menu-target="button" data-action="slack-menu#toggle" aria-controls="sidebar" aria-expanded="false">
+    <%= image_tag "menu.svg", size: 20, aria: { hidden: "true" }, class: "colorize--black" %>
+    <span class="for-screen-reader">Open menu</span>
+  </button>
+  <div class="slack-menu__backdrop" data-action="click->slack-menu#close"></div>
+</div>

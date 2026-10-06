@@ -28,10 +28,6 @@
   min-block-size: var(--slack-header-height, 49px);
   order: 0;
   padding-inline: 16px;
-
-  @media (max-width: 100ch) {
-    padding-inline-start: calc(var(--btn-size) + 24px);
-  }
 }
 
 .slack-sidebar__section {
