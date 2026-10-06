@@ -1,0 +1,93 @@
+#footer .composer .composer__input.input {
+  padding: 0;
+
+  > div {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "editor editor editor"
+      "attach . send";
+    align-items: center;
+    gap: 0;
+  }
+
+  .composer__input-hint,
+  .composer__rich-text-btn {
+    display: none;
+  }
+
+  > div > .flex-column {
+    grid-area: editor;
+    min-inline-size: 0;
+  }
+
+  .composer__attachment-btn {
+    grid-area: attach;
+    margin: 0 0 4px 4px;
+    --btn-size: 28px;
+
+    img {
+      opacity: 0.7;
+
+      @media (prefers-color-scheme: dark) {
+        filter: invert(100%);
+      }
+    }
+  }
+
+  button[name="send"] {
+    grid-area: send;
+    margin: 0 8px 8px 0;
+    --btn-size: 28px;
+    --btn-border-radius: 6px;
+    --btn-background: transparent;
+    --btn-color: var(--slack-muted);
+
+    img {
+      opacity: 0.5;
+    }
+  }
+
+  lexxy-editor.input {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-block-size: 0;
+
+    .lexxy-editor__content {
+      order: 0;
+      padding: 8px 12px;
+      min-block-size: 24px;
+    }
+  }
+}
+
+@media (min-width: 100ch) and (any-hover: hover) and (pointer: fine) {
+  #footer #composer lexxy-editor.input {
+    margin: 0;
+
+    lexxy-toolbar {
+      display: flex;
+      order: -1;
+      margin: 0;
+      padding: 4px 8px;
+      border-block-end: 1px solid var(--slack-border);
+      color: var(--slack-muted);
+    }
+  }
+}
+
+#footer #composer:is(
+  :has(lexxy-editor:not(.lexxy-editor--empty)),
+  :has(.composer__file)
+) .composer__input.input button[name="send"] {
+  --btn-background: #007a5a;
+  --btn-color: #ffffff;
+
+  background-color: #007a5a;
+
+  img {
+    opacity: 1;
+    filter: invert(100%);
+  }
+}

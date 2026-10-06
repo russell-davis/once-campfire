@@ -19,6 +19,7 @@
                 <div class="flex flex-column flex-item-grow min-width gap">
                   <%= form.rich_text_area :body,
                         rows: 1,
+                        placeholder: room.direct? ? "Message #{room_display_name(room)}" : "Message ##{room_display_name(room)}",
                         class: "input lexxy-content",
                         style: "order: -1",
                         aria: { multiline: "true", label: "Write a message" },
