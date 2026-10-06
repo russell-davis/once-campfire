@@ -1,0 +1,77 @@
+.slack-switcher {
+  background: var(--slack-bg);
+  border: 1px solid var(--slack-border);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.5);
+  color: var(--slack-text);
+  inset: 12vh auto auto 50%;
+  margin: 0;
+  max-width: calc(100vw - 2rem);
+  overflow: hidden;
+  padding: 0;
+  transform: translateX(-50%);
+  width: 560px;
+}
+
+.slack-switcher::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+
+.slack-switcher__input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--slack-border);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--slack-text-strong);
+  font-size: 1.1rem;
+  inline-size: 100%;
+  outline: none;
+  padding: 0.9rem 1rem;
+}
+
+.slack-switcher__list {
+  list-style: none;
+  margin: 0;
+  max-block-size: 50vh;
+  overflow-y: auto;
+  padding: 0.35rem;
+}
+
+.slack-switcher__item {
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.slack-switcher__item[aria-selected="true"] {
+  background: var(--slack-selected);
+  color: var(--slack-text-strong);
+}
+
+.slack-switcher__prefix {
+  color: var(--slack-muted);
+  flex: none;
+  inline-size: 1ch;
+  text-align: center;
+}
+
+.slack-switcher__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slack-switcher__item--unread .slack-switcher__name {
+  color: var(--slack-text-strong);
+  font-weight: 700;
+}
+
+.slack-switcher__empty {
+  color: var(--slack-muted);
+  padding: 0.65rem;
+}

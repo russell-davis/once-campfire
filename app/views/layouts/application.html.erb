@@ -33,6 +33,7 @@
     <a href="#main-content" class="skip-navigation btn">Skip to main content</a>
 
     <%= render "layouts/slack_chrome" if slack_chrome? %>
+    <%= render "layouts/slack_switcher" if slack_chrome? %>
 
     <nav id="nav">
       <%= yield :nav %>

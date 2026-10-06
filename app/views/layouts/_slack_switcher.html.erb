@@ -1,0 +1,4 @@
+<dialog id="slack-switcher" class="slack-switcher" aria-label="Jump to" data-slack-target="dialog" data-action="click->slack#backdropClick close->slack#switcherClosed">
+  <input type="text" class="slack-switcher__input" placeholder="Jump to a conversation" autocomplete="off" spellcheck="false" aria-label="Jump to a conversation" data-slack-target="input" data-action="input->slack#filterSwitcher keydown->slack#switcherKeydown">
+  <ul class="slack-switcher__list" role="listbox" data-slack-target="list" data-action="click->slack#pickRoom mousemove->slack#hoverRoom"></ul>
+</dialog>
