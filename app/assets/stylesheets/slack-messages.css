@@ -211,6 +211,12 @@
   border-radius: 8px;
 }
 
+.messages .message__body-content .max-inline-size.center {
+  border-radius: 8px;
+  margin-inline: 0;
+  max-inline-size: min(480px, 100%);
+}
+
 .messages .message--emoji:not(:has(.composer--edit)) .message__body-content {
   padding: 0;
   text-align: start;
@@ -295,10 +301,38 @@
     --btn-border-radius: 4px;
     --btn-size: 32px;
 
-    flex: 0 0 auto;
+    aspect-ratio: 1;
+    block-size: 32px;
+    box-sizing: border-box;
+    flex: 0 0 32px;
+    inline-size: 32px;
+    padding: 0;
 
     &:where(:not(:active):hover) {
       --btn-background: var(--slack-hover);
+    }
+  }
+
+  .messages .message__toolbar .message__action-btn {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .messages .message__actions-menu .quick-boosts form:nth-child(-n + 3),
+  .messages .message__actions-menu .quick-boosts .message__boost-btn,
+  .messages .message__actions-grid [title="Reply"],
+  .messages .message__actions-grid [title="Download"],
+  .messages .message__actions-grid .message__edit-btn {
+    display: none;
+  }
+
+  .messages .message__actions-grid {
+    display: flex;
+    gap: 2px;
+
+    .message__action-btn {
+      flex: 1 1 0;
+      inline-size: auto;
     }
   }
 
